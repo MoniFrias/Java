@@ -1,5 +1,7 @@
 package com.example.demo.singlyLinkedList;
 
+import java.util.Objects;
+
 public class SinglyLinkedList implements ISinglyLinked{
 
 	private Nodo head;
@@ -55,7 +57,7 @@ public class SinglyLinkedList implements ISinglyLinked{
 		Nodo lastNode = head;		
 		int value = 0;
 		if(!empty()) {
-			while(lastNode.next != null) {
+			while(Objects.nonNull(lastNode.next)) {
 				previousToLastNode = lastNode;
 				lastNode = lastNode.next;
 			}
@@ -75,11 +77,11 @@ public class SinglyLinkedList implements ISinglyLinked{
 	
 	@Override
 	public boolean remove(int dato) {
-		Nodo[] res = buscarNodo(dato);
-		if(res == null) {
+		Nodo[] res = searchNode(dato);
+		if(Objects.isNull(res)) {
 			return false;
 		}else {
-			if(res[0] == null) { //when is element 1 to be removed since prev is null
+			if(Objects.isNull(res[0])) { //when is element 1 to be removed since prev is null
 				removeFirst();
 			}else {
 				res[0].next = res[1].next;
@@ -93,7 +95,7 @@ public class SinglyLinkedList implements ISinglyLinked{
 	@Override
 	public boolean search(int dato) {
 		Nodo temp = head;
-		while (temp != null) {
+		while (Objects.nonNull(temp)) {
 			if(temp.dato == dato) {
 				return true;
 			}else {			
@@ -103,11 +105,11 @@ public class SinglyLinkedList implements ISinglyLinked{
 		return false;
 	}
 	
-	private Nodo[] buscarNodo(int dato) {
+	private Nodo[] searchNode(int dato) {
 		
 		Nodo prevTemp = null;
 		Nodo temp = head;
-		while (temp != null) {
+		while (Objects.nonNull(temp)) {
 			if(temp.dato == dato) {
 				Nodo[] res = new Nodo[2];
 				res[0] = prevTemp;
@@ -125,7 +127,7 @@ public class SinglyLinkedList implements ISinglyLinked{
 	public String moveForward() {
 		String cad = "{";
 		Nodo temp = head;
-		while (temp != null) {
+		while (Objects.nonNull(temp)) {
 			cad += temp.dato + ", ";
 			temp = temp.next;
 		}

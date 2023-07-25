@@ -1,23 +1,27 @@
 package com.example.demo;
 
+import java.util.LinkedList;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.circularLinkedList.CircularLinkedList;
 import com.example.demo.doublyLinkedList.DoublyLinkedList;
 import com.example.demo.doublyLinkedList.Fraction;
+import com.example.demo.linkedListJavaUtil.LinkedListUseJavaUtil;
 import com.example.demo.singlyLinkedList.SinglyLinkedList;
 
 @SpringBootApplication
 public class LinkedListsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LinkedListsApplication.class, args);
+		SpringApplication.run(LinkedListsApplication.class, args);	
 		
 		Scanner keyboard = new Scanner(System.in);
 		System.out.println("1. Singly Linked List\n2. Doubly Linked List\n3. Circular Linked List"
-				+ "\nSelect an opction: ");
+				+ "\n4. Linked List Java Util \nSelect an opction: ");
 		int opc = keyboard.nextInt();
 		switch (opc) {
 		case 1: {
@@ -110,10 +114,63 @@ public class LinkedListsApplication {
 			break;
 		}
 		case 3: {
+			
+			CircularLinkedList list = new CircularLinkedList();
+			
+			//////////////////////////// Insert element /////////////////////////
+			list.insertFirst(1);
+			list.insertFirst(3);
+			list.insertFirst(10);
+			list.insertAtPosition(2, 6);
+			list.insertAtPosition(5, 11);
+			list.insertLast(5);	
+			list.insertLast(8);
+			list.insertLast(16);
+			System.out.println("Size: " + list.sizeList());		
+			System.out.println(list.moveForward());
+			
+			////////////////////////////Search element /////////////////////////
+			System.out.print("Does the List contains '3'? : ");
+			if(list.search(3)) {
+				System.out.print("Yes\n");
+			}else {
+				System.out.print("No\n");
+			}
+			
+			////////////////////////////Remove element /////////////////////////
+			System.out.println("Deleted specific item: '6'");
+			list.remove(6);
+			System.out.println(list.moveForward());
+			System.out.println(list.sizeList());
+			
+			System.out.println("Deleted first item: " + list.removeFirst());
+			System.out.println("Deleted first item: " + list.removeFirst());
+			System.out.println("Deleted first item: " + list.removeFirst());
+			
+			System.out.println("Deleted Last item: " + list.removeLast());
+			System.out.println("Deleted Last item: " + list.removeLast());
+			System.out.println(list.moveForward());
+			break;
+		}
+		case 4: {
+			LinkedListUseJavaUtil linkedListClass = new LinkedListUseJavaUtil();
+			System.out.println("\nInsert: ");
+			System.out.println(linkedListClass.insertElements());
+			System.out.println("\nSize: " + linkedListClass.getAllElements().size());
+			System.out.println("\nSearch: ");
+			System.out.println("Does the List contains 'Josh': " + linkedListClass.search("Josh"));
+			System.out.println("\nUpdate: ");
+			System.out.println("Before: " + linkedListClass.getAllElements());
+			System.out.println("Update value form inde '4': " + linkedListClass.update(4, "Charles"));
+			System.out.println("\nRemove: ");
+			System.out.println("Before: " + linkedListClass.getAllElements());
+			System.out.println("After: " + linkedListClass.removeElements());
+			System.out.println("\nIterar: ");
+			linkedListClass.iterarElements();
 			break;
 		}
 		default:
-			throw new IllegalArgumentException("Unexpected value: " + opc);
+			System.out.println("Unexpected value: " + opc);
 		}
 		
 	}

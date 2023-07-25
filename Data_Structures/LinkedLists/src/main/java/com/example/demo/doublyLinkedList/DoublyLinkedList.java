@@ -1,5 +1,7 @@
 package com.example.demo.doublyLinkedList;
 
+import java.util.Objects;
+
 public class DoublyLinkedList implements IDoublyLinked{
 	private Nodo head;
 	private Nodo fin;
@@ -30,7 +32,7 @@ public class DoublyLinkedList implements IDoublyLinked{
 		if(!empty()) {
 			Fraction value = head.dato;
 			head = head.next; // advance start
-			if(head == null) {
+			if(Objects.isNull(head)) {
 				// there was one node
 				fin = null;
 			}else {
@@ -59,7 +61,7 @@ public class DoublyLinkedList implements IDoublyLinked{
 		if(!empty()) {
 			Fraction value = fin.dato;
 			fin = fin.prev; // 
-			if(fin == null) {
+			if(Objects.isNull(fin)) {
 				// there was one node
 				head = null;
 			}else {
@@ -75,12 +77,12 @@ public class DoublyLinkedList implements IDoublyLinked{
 	@Override
 	public boolean remove(Fraction dato) {
 		Nodo temp = searchNode(dato);
-		if(temp == null) {
+		if(Objects.isNull(temp)) {
 			return false; // Node does not exist
 		}else {
-			if(temp.prev == null) { // when it is the first element to be removed
+			if(Objects.isNull(temp.prev)) { // when it is the first element to be removed
 				removeFirst();
-			}else if(temp.next == null){// if the node is at the end
+			}else if(Objects.isNull(temp.next)){// if the node is at the end
 				removeLast(); 
 			}else { // is between two nodes
 				//the node is removed by the garbage collection
@@ -96,7 +98,7 @@ public class DoublyLinkedList implements IDoublyLinked{
 	@Override
 	public boolean search(Fraction dato) {
 		Nodo temp = head;
-		while(temp != null) {
+		while(Objects.nonNull(temp)) {
 			if(temp.dato.equals(dato)) {
 				return true;
 			}else {
@@ -108,7 +110,7 @@ public class DoublyLinkedList implements IDoublyLinked{
 	
 	private Nodo searchNode(Fraction dato) {
 		Nodo temp = head;
-		while (temp != null) {
+		while (Objects.nonNull(temp)) {
 			if(temp.dato.equals(dato)) {
 				return temp;
 			}else {			
@@ -122,7 +124,7 @@ public class DoublyLinkedList implements IDoublyLinked{
 	public String moveForward() {
 		Nodo temp = head;
 		String cad = "";
-		while(temp != null) {
+		while(Objects.nonNull(temp)) {
 			cad += temp.dato + ",";
 			temp = temp.next; // advance it to the next
 		}
@@ -133,7 +135,7 @@ public class DoublyLinkedList implements IDoublyLinked{
 	public String moveBackwards() {
 		Nodo temp = fin;
 		String cad = "";
-		while(temp != null) {
+		while(Objects.nonNull(temp)) {
 			cad += temp.dato + ",";
 			temp = temp.prev; // advance it to the next
 		}
