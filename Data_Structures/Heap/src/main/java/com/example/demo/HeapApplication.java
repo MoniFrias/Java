@@ -10,12 +10,12 @@ public class HeapApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HeapApplication.class, args);
-		
+
 		Scanner keyboard = new Scanner(System.in);
 		int opc = 0;
 		do {
 			System.out.println("\nSelect an opction: \n1. MinHeap \n2. MaxHeap \n3. Exit ");
-			opc = keyboard.nextInt();			
+			opc = keyboard.nextInt();
 			switch (opc) {
 			case 1: {
 				MinHeapClass h = new MinHeapClass(7);
@@ -28,21 +28,21 @@ public class HeapApplication {
 				h.insert(24);
 				h.insert(17);
 				h.insert(5);
-				
+
 				System.out.println("\nPrint Tree:\n");
 				h.printTree();
 				System.out.println("\nPrint Array:\n");
 				h.printArray();
-				
-				int arr[] = {30, 48, 15, 67, 24, 17, 5};
+
+				int arr[] = { 30, 48, 15, 67, 24, 17, 5 };
 				MinHeapClass h2 = new MinHeapClass(arr);
-				
+
 				System.out.println("\n** Array is already full and the heap is built **\n");
 				System.out.println("\nPrint Tree:\n");
 				h2.printTree();
 				System.out.println("\nPrint Array:\n");
 				h2.printArray();
-				
+
 				h2.heapSort();
 				System.out.println("\nPrint Array heapSort:\n");
 				h2.printArray();
@@ -59,35 +59,35 @@ public class HeapApplication {
 				h.insert(24);
 				h.insert(17);
 				h.insert(5);
-				
+
 				System.out.println("\nPrint Tree:\n");
 				h.printTree();
 				System.out.println("\nPrint Array:\n");
 				h.printArray();
-				
-				int arr[] = {30, 48, 15, 67, 24, 17, 5};
+
+				int arr[] = { 30, 48, 15, 67, 24, 17, 5 };
 				MaxHeapClass h2 = new MaxHeapClass(arr);
-				
+
 				System.out.println("\n** Array is already full and the heap is built **\n");
 				System.out.println("\nPrint Tree:\n");
 				h2.printTree();
 				System.out.println("\nPrint Array:\n");
 				h2.printArray();
-				
+
 				h2.heapSort();
 				System.out.println("\nPrint Array heapSort:\n");
-				h2.printArray();				
-				break;	
-			}			
+				h2.printArray();
+				break;
+			}
 			case 3: {
 				opc = 3;
 				break;
 			}
 			default:
 				System.out.println("Unexpected value: " + opc);
-			}			
-		
-		}while(opc != 3);
+			}
+
+		} while (opc != 3);
 	}
 
 }
