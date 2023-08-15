@@ -4,11 +4,8 @@ public class BinarySearch {
 
 	public void searchMethod(int arr[], int num) {
 		int result = search(arr, num);
-		if(result >= 0) {
-			System.out.println("Number " + num + " is present at index: " + result);
-		}else {
-			System.out.println("Number " + num + " is not present");
-		}
+		System.out.println((result >= 0) ? "Number " + num + " is present at index: " + result
+				: "Number " + num + " is not present");
 	}
 
 	public int search(int arr[], int num) {
@@ -19,9 +16,9 @@ public class BinarySearch {
 			if (arr[middle] == num) {
 				return middle;
 			}
-			if(arr[middle] < num) {
+			if (arr[middle] < num) {
 				low = middle + 1;
-			}else {
+			} else {
 				high = middle - 1;
 			}
 		}
